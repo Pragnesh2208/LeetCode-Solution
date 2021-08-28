@@ -1,9 +1,7 @@
 
-/*********
- This is brute force Approach For this problem 
-TIme complexity = O(n^2) and Space Complexity = O(1)
-
-*****/
+/**************************This is brute force Approach For this problem ***************************/
+/**************************TIme complexity = O(n^2) Big oh of N square ****************************/
+/************************* and Space Complexity = O(1)********************************************/
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {
@@ -25,10 +23,10 @@ public:
     }
 };
 
-/************
-This is optimal solution and the Time complexity = O(n)
-And space complexity = O(1)
-                                     ************/
+/**************************************This is optimal solution***********************************/
+/************************************** the Time complexity = O(n)*******************************/
+/************************************** space complexity = O(1)**********************************/
+                                    
 #include<bits/stdc++.h>
 class Solution {
 public:
