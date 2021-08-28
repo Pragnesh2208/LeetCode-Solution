@@ -15,3 +15,29 @@ public:
         
     }
 };
+
+
+/******************** Optimal approach To find Duplicate number in array ****************/
+/*******************Time complexity = O(n) **************************************************/
+/*******************Space complexity = O(1)  ***********************************************/
+
+
+
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n=nums.size() , ans=0;
+        for(long long i=0;i<n;i++)
+        {
+            if(nums[abs(nums[i])]>0)
+                nums[abs(nums[i])]=-nums[abs(nums[i])];
+            else
+            {
+                ans=abs(nums[i]);
+            break;}
+        }
+        return ans;
+    }
+};
