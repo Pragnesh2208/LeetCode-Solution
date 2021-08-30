@@ -1,4 +1,4 @@
-/******************** Only approach To find largest sum of subarray****************/
+/******************** Only approach To find Maximum sum of subarray****************/
 /*******************Time complexity = O(N) **************************************************/
 /*******************Space complexity = O(1)  ***********************************************/
 class Solution {
