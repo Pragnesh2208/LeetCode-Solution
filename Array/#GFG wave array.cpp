@@ -1,6 +1,7 @@
 /********************Optimal approach To wave array*******************************/
 /********************Time complexity = O(N)********************************************************/
 /*******************Space complexity = O(1)*******************************************************/
+ class Solution {
  public:
     void convertToWave(vector<int>& arr, int n){
         
