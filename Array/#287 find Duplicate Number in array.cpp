@@ -16,7 +16,7 @@ public:
     }
 };
 
-
+/********************For mutable array**************************************************/
 /******************** Optimal approach To find Duplicate number in array ****************/
 /*******************Time complexity = O(n) **************************************************/
 /*******************Space complexity = O(1)  ***********************************************/
@@ -39,5 +39,35 @@ public:
             break;}
         }
         return ans;
+    }
+};
+/********************For immutabble array**************************************************/
+/******************** Optimal approach To find Duplicate number in array ****************/
+/*******************Time complexity = O(n) **************************************************/
+/*******************Space complexity = O(1)  ***********************************************/
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+
+        // Find the intersection point of the two runners.
+       int slow=nums[0];
+    int fast=nums[0];
+        do{
+            slow=nums[slow];
+            fast=nums[nums[fast]];
+        
+        }
+        while(slow!=fast);
+            
+           slow=nums[0];
+        while(slow!=fast)
+        {
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        return slow;
+        
     }
 };
