@@ -1,4 +1,4 @@
-/************************************Brute Force approach to find Daily temperatures******/
+/************************************Method -1 using Stack and space complexity O(n)*******/
 /************************************Time complexity = O (N)******************************/
 /************************************Space Complexity = O (N)*****************************/
 class Solution {
@@ -21,7 +21,7 @@ public:
         return temperatures;
     }
 };
-/************************************Optimal approach to find Daily temperatures******/
+/************************************Method -2 with O(1) space complexity*****************/
 /************************************Time complexity = O (N)******************************/
 /************************************Space Complexity = O (1)*****************************/
 class Solution {
