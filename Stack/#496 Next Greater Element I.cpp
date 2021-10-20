@@ -1,5 +1,5 @@
 /************************************Optimal solution to find next greater element******/
-/************************************Time complexity = Theta of ( l2 ) *****************/
+/************************************Time complexity = Theta of ( l2  + l1 ) *****************/
 /************************************Space Complexity = O ( l2 )************************/
 class Solution {
 public:
