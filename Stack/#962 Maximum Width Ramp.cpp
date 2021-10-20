@@ -1,4 +1,4 @@
-/************************************Optimal approach to find next greater element*****/
+/************************************Optimal approach to find Maximum Width Ramp********/
 /************************************Time complexity = O( N)***************************/
 /************************************Space Complexity = O ( N )************************/
 class Solution {
