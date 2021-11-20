@@ -1,6 +1,6 @@
 /********************************Optimal approach to Print all Permutation*********/ 
 /********************************Time Complexity  = O (  N * N!  )************************/
-/********************************Here N for loop and N! for total permutations************/
+/********************************Here N to putting nums in result and N! for total permutations************/
 /********************************Space Complexity  = O ( N )******************************/
 class Solution {
 public:
