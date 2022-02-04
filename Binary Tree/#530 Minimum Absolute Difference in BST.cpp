@@ -37,19 +37,37 @@ public:
 /******************************Time Complexity = O(N)********************************************************/
 /*******************************Space Complexity = O(1)******************************************************/
 class Solution {
+    private :
+    int prev = -1;
     private:
-    TreeNode * inorder(TreeNode * root , int &ans) {
-        
-        if(root -> left)
-        {
-             TreeNode * left = inorder(root -> left , ans);
-            ans = min(ans , abs(root -> val - left -> val));    
-        }
-        if(root -> right) {
-             TreeNode * right = inorder(root -> right , ans);
-         ans = min(ans , abs(root -> val - right -> val));  
-        }
-        return root;
+    void checkPrev(int &prev, int &ans , TreeNode * &root ) {
+         if(prev != -1){
+                 ans = min(ans , root -> val - prev);
+             }
+             prev = root -> val;
+    }
+    void inorder(TreeNode * root , int &ans) {
+     while(root){
+         if(root -> left == NULL) {
+            checkPrev(prev , ans , root);
+             root = root -> right;
+         }
+         else {
+             TreeNode * pre = root -> left;
+             while(pre -> right && pre -> right != root) {
+                 pre = pre -> right;
+             }
+             if(pre -> right == root) {
+                 pre -> right = NULL;
+                 checkPrev(prev , ans ,root);
+                 root = root -> right;
+             }
+             else {
+                 pre -> right = root;
+                 root = root -> left;
+             }
+         }
+     }
     }
 public:
     int getMinimumDifference(TreeNode* root) {
