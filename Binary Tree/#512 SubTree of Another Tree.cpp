@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/*********************Optimal Approach for SubTree of Another Tree******************/
+/*********************Time complexity = O (N)***************************************/
+/**********************Space complexity = O (H)*************************************/
 class Solution {
     bool isSametree(TreeNode* s, TreeNode* t){
        if(!s || !t){
