@@ -16,10 +16,12 @@ class Solution {
      void level(TreeNode * root , int lev , unordered_map<int , int> & level_sum) {
         if(root == NULL)
             return; 
+
         level_sum[lev] += root -> val;
         
-         level(root -> left , lev +1 , level_sum);
-         level(root -> right, lev + 1 , level_sum);
+        level(root -> left , lev +1 , level_sum);
+
+        level(root -> right, lev + 1 , level_sum);
         
     } 
 public:
