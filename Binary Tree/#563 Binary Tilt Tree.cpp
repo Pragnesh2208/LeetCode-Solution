@@ -12,6 +12,10 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/***********************Optimal Approach For Binary Tilt Tree******************************/
+/************************Time Complexity = O(N)***************************************************/
+/************************Space Complexity = O(H)**************************************************/
+
 class Solution {
     int Sum(TreeNode * root , int &sum) {
         if(root == NULL)
