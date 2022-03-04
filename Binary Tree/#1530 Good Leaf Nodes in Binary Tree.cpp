@@ -10,8 +10,8 @@
  * };
  */
 /*********************Optimal Approach for Good Leaf Nodes in Binary Tree***********/
-/*********************Time complexity = O (N)***************************************/
-/**********************Space complexity = O (N )************************************/
+/*********************Time complexity = O (N * (Number of Leaf ^ 2))***************************************/
+/**********************Space complexity = O (N + Number of Leaf)************************************/
 class Solution {
     int count = 0 ;
     private:
