@@ -56,6 +56,8 @@ class Solution
     public:
         vector<vector<int>> levelOrderBottom(TreeNode *root)
         {
+            if (!root)
+                return root;
             vector<vector<int>> ans;
             bfs(root, ans);
 
