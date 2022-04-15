@@ -18,7 +18,7 @@ public:
 
 /***********************Optimal Approach Populating Next Right Pointers in Each Node II****/
 /************************Time Complexity = O(N)****************************************/
-/************************Space Complexity = O(N)***************************************/
+/************************Space Complexity = O(1)***************************************/
 
 class Solution
 {
