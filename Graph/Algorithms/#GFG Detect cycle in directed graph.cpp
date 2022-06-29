@@ -34,3 +34,38 @@ class Solution {
       return false;
     }
 };
+
+
+/******************************Method 2 Using BFS**************************************/
+/*****************************Using topological sort or Kahn's algorithm*******************************/
+/****************************Time Complexity = O( V + E)*******************************/
+/***************************Space Complexity = O(V) as we are using visit array********/
+class Solution
+{
+	public:
+	//Function to return list containing vertices in Topological order. 
+ bool isCyclic(int v, vector<int> adj[]) {
+	    vector<int>inorder(v , 0);
+	    for(int i = 0 ; i < v ;i++) {
+	        for(auto j : adj[i])
+	        inorder[j]++;
+	    }
+	    
+	    queue<int>que;
+	  int count=0;
+	    for(int i = 0 ; i < v ; i++) 
+	        if(inorder[i] == 0) {que.push(i);
+            count++;}
+	    
+	    while(!que.empty()) {
+	        int x = que.front();
+	        que.pop();
+    
+	        for(auto i : adj[x]) {
+	            inorder[i]--;
+	            if(inorder[i] == 0) count++;
+	        }
+	    }
+	    return count==v;
+	    
+	}
