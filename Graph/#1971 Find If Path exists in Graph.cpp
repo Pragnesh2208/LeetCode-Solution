@@ -1,5 +1,5 @@
 /***************************Method - 1 By creating the Adjencency List of Graph using Unorder_map*************/
-/*****************************Find if path exists in Graph using graph****************************************/
+/*****************************Optimal solution of Find if path exists in Graph using graph********************/
 /****************************Time Complexity = O( V + E)******************************************************/
 /***************************Space Complexity = O(V) as we are using visit array*******************************/
 
@@ -47,10 +47,10 @@ public:
     }
 };
 
-/***************************Method - 1 By creating the Adjencency List of Graph using 2D vector*************/
-/*****************************Find if path exists in Graph using graph****************************************/
-/****************************Time Complexity = O( V + E)******************************************************/
-/***************************Space Complexity = O(V) as we are using visit array*******************************/
+/***************************Method - 2 By creating the Adjencency List of Graph using 2D vector*************/
+/*****************************Optimal solution of Find if path exists in Graph using graph******************/
+/****************************Time Complexity = O( V + E)****************************************************/
+/***************************Space Complexity = O(V) as we are using visit array*****************************/
 
 
 class Solution {
