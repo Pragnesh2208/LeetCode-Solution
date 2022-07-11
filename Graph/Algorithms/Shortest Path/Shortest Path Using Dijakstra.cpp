@@ -17,10 +17,11 @@ Class Solution{
         {
             int weight = minheap.top().second;
             int vertice = minheap.top().first;
+            
             minheap.pop();
             for(vector<pair<int , int >>::iterator i = graph[vertice].begin() ; i != graph[vertice].end() ; i++ ){
                 int weightOfvertice = i -> second;
-                int node = i > first;
+                int node = i -> first;
                 if(dist[node] > dist[vertice] + weightOfvertice){
                     dist[node] = dist[vertice] + weightOfvertice;
                     minheap.push( make_pair(node, dist[node])  );
