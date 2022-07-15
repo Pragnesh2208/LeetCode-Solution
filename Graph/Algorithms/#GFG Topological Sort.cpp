@@ -12,9 +12,9 @@ class Solution
             if(vis[i] == false){ 
                 
                 dfs(i , adj , vis , st);
-        }}
+        	}
+		}
         st.push(node);
-        
     }
 	public:
 	//Function to return list containing vertices in Topological order. 
