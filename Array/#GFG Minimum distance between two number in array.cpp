@@ -58,3 +58,28 @@ public:
         return -1;
     }
 };
+
+
+/*******************************Optimal Approach to Find Minimum Distance between two number***********************************/
+/*******************************Time complexity = O(N)*************************************************************************/
+/*******************************Space complexity = O(1)************************************************************************/
+
+class Solution {
+public:
+    int minDist(int a[], int n, int x, int y) {
+        int xi = -1, ji =-1 , minDist = INT_MAX;
+        for(int i=0;i<n;i++)
+        {
+           if(a[i] == x) xi = i;
+           else if(a[i] == y) yi = i;
+           if(xi != -1 && yi != -1)
+           minDist = min(abs(xi - yi) , minDist);
+        }
+       
+        if(minDist!=INT_MAX)
+        return minDist;
+        else
+        return -1;
+    }
+};
+
