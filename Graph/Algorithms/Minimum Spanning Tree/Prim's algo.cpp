@@ -54,7 +54,7 @@ public:
     void prims(vector<pair<int,int>> graph){
         int n = graph.size();
         vector<bool>mst( n ,false);
-        vector<int>parent(n,-1), value(n , -1);
+        vector<int>parent(n,-1), value(n , INT_MAX);
         priority_queue<pair<int,int> , vector<pair<int,int>>  , greater<pair<int,int>>> pq;
         pq.push{0 ,0 };
         value[0]=0;      

@@ -12,7 +12,7 @@ private:
         for (auto i : adj[node])
         {
             if (vis[i] == false)
-                toposort(i, vis, st);
+                toposort(i, vis , st);
         }
         st.push(node);
     }

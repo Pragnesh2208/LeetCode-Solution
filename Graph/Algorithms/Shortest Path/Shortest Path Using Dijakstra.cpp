@@ -34,7 +34,5 @@ Class Solution{
 
             done_heap[vertice] = true;
         }
-        
-
     }
-}
+};

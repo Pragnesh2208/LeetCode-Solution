@@ -50,7 +50,6 @@ private:
             else if(*itr != parent)
             return true;
         }
-
     }
 public:
     bool Iscycle(vector<int>graph[]){
@@ -65,7 +64,6 @@ public:
                 dfs( i ,-1, visit,graph);
             }
         }
-       }
-       return false;
+        return false;
     }
 };
