@@ -60,10 +60,11 @@ class Solution
 	    while(!que.empty()) {
 	        int x = que.front();
 	        que.pop();
-    
+
+            count++;
 	        for(auto i : adj[x]) {
 	            inorder[i]--;
-	            if(inorder[i] == 0) count++;
+	            if(inorder[i] == 0) que.push(i);
 	        }
 	    }
 	    return count==v;
