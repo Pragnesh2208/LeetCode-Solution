@@ -27,20 +27,5 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
-  ],
-  "files.associations": {
-    "iostream": "cpp",
-    "array": "cpp",
-    "any": "cpp",
-    "string_view": "cpp",
-    "regex": "cpp",
-    "deque": "cpp",
-    "forward_list": "cpp",
-    "list": "cpp",
-    "vector": "cpp",
-    "chrono": "cpp",
-    "random": "cpp",
-    "limits": "cpp",
-    "valarray": "cpp"
-  }
+  ]
 }
