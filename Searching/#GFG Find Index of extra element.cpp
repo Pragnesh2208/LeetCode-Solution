@@ -10,7 +10,7 @@ public:
      return -1;
     }
 };
-/****************************Brute Force approach To Find Index of extra number****************************/
+/****************************Optimal Force approach To Find Index of extra number****************************/
 /****************************Time complexity = O(LOGN)Big O of Log N***************************************/
 /****************************Space complexity = O(1)*******************************************************/
 class Solution{
@@ -28,5 +28,29 @@ class Solution{
         low=mid+1;
     }
     return -1;
+    }
+};
+
+/****************************Optimal Force approach To Find Index of extra number****************************/
+/****************************Time complexity = O(LOGN)Big O of Log N***************************************/
+/****************************Space complexity = O(1)*******************************************************/
+
+class Solution{
+  public:
+    int findExtra(int a[], int b[], int n) {
+        // add code here.
+        
+        int left = 0 , right = n-1;
+        while(left <= right) {
+            
+            int mid = left + (right - left )/2;
+            
+            if(a[mid]!= b[mid]) {
+                right = mid - 1;
+            }
+            else
+            left = mid + 1;
+        }
+        return right + 1;
     }
 };
