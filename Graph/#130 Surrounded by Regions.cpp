@@ -1,6 +1,6 @@
 /*****************************Optimal solution of Find Surrounded Regions**************************/
 /****************************Time Complexity = O( V + E)*******************************************/
-/***************************Space Complexity = O(max(row , col)) as of dfs*************************/
+/***************************Space Complexity = O(V + E) as of dfs**********************************/
 class Solution {
     void dfs(int i , int j , int &row , int &col , vector<vector<char>>&board){
         if(i< 0 || i == row || j < 0 || j == col || board[i][j] == 'X' || board[i][j] == 'b'){
