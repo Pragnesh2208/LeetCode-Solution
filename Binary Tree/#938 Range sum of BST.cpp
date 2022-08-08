@@ -13,29 +13,19 @@
  * };
  */
 class Solution {
+    int ans = 0;
+    private:
+    void inorder(TreeNode * root , int &low ,int &high){
+        if(root == NULL) return;
+        else if(root -> val <= high && root ->val >= low){
+            ans += root ->val;
+        }
+        inorder(root -> left , low , high);
+        inorder(root -> right , low , high);
+    }
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-        queue<TreeNode*> que;
-        int sum = 0;
-        if(root == nullptr)
-            return 0;
-        que.push(root);
-        while(!que.empty()) {
-            TreeNode *top = que.front();
-            que.pop();
-           
-            if(top -> val <= high && top -> val >= low )
-            { sum += top -> val;
-             if(top -> left != NULL)
-            que.push(top -> left);
-             if(top -> right != NULL)
-            que.push(top -> right);
-            }
-            if(top -> val < low && top -> right != NULL)
-                que.push(top -> right);
-            else if(top -> val  > high && top -> left != NULL)
-                que.push(top -> left);   
-        }
-        return sum;
+        inorder(root , low , high);
+        return ans;
     }
 };
