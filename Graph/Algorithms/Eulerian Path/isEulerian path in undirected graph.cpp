@@ -1,4 +1,4 @@
-/******************Check if Eulerian Path Does exist in Directed Graph or Not***************/
+/******************Check if Eulerian Path Does exist in Undirected Graph or Not***************/
 /******************Time Complexity = O(V + E)***********************************************/
 /******************Space Complexity = O(v)**************************************************/
 class Solution{
@@ -20,7 +20,7 @@ class Solution{
         if(vertex == graph.size())
         return true;
         int n = graph.size();
-        
+
         vector<bool>visit( n , false );
         dfs(vertex , graph , visit);
 
