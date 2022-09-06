@@ -1,3 +1,7 @@
+/**************************KMP string matching algorithm******************/
+/**************************Time Complexity is O(m)************************/
+/**************************Space complexity is O(n + m)*******************/
+
 #include <bits/stdc++.h>
 #include <vector>
 using namespace std;
