@@ -1,0 +1,19 @@
+/*****************************************Optimal approach to shuffle the array****************/
+/*****************************************Time complexity = O(N) ******************************/
+/*****************************************Space complexity = O(1)******************************/
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        int max_val = 1001;
+        int len = nums.size();
+        for(int i = n  ; i < len  ; i++) {
+            nums[i] = (nums[i]* max_val) + nums[i - n ];
+        }
+        int index = 0;
+        for(int i = n ; i < len ; i++  , index+=2) {
+               nums[index] = nums[i] % max_val;
+               nums[index + 1 ]=nums[i]/max_val;
+        }
+        return nums;
+    }
+};
