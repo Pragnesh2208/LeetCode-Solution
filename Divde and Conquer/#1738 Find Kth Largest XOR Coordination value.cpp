@@ -1,3 +1,7 @@
+
+/************************Optimal solution to Find Kth Largest XOR Coordinate value*************************/
+/************************Time Complexity = O(N*M*LogK)**************************************************/
+/************************Space Complexity = O(N*M)*************************************************/
 class Solution {
 public:
     int kthLargestValue(vector<vector<int>>& matrix, int k) {
