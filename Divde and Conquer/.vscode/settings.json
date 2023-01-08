@@ -39,6 +39,7 @@
     "string_view": "cpp",
     "initializer_list": "cpp",
     "utility": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "vector": "cpp"
   }
 }
