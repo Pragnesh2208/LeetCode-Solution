@@ -1,3 +1,7 @@
+/****************Find Maximum Path sum in matrix using memoization*******************/
+/****************Time Complexity = O(M * N)*************************************/
+/****************Space Complexity = O(N * M)************************************/
+
 #include <bits/stdc++.h> 
 
 int helper(int row, int col , vector<vector<int>>&matrix , vector<vector<int>>&dp) {
@@ -29,8 +33,9 @@ int getMaxPathSum(vector<vector<int>> &matrix)
     return ans;   
 }
 
-
-
+/****************Find Maximum Path sum in matrix using tabulation*******************/
+/****************Time Complexity = O(M * N)*************************************/
+/****************Space Complexity = O(N * M)************************************/
 #include <bits/stdc++.h> 
 
 int helper(vector<vector<int>>&matrix , vector<vector<int>>&dp) {
@@ -57,13 +62,12 @@ int getMaxPathSum(vector<vector<int>> &matrix)
     //  Write your code here.
     int n = matrix.size(), m = matrix[0].size();
     vector<vector<int>> dp(n , vector<int>(m , INT_MIN));
-   
     return helper(matrix , dp);  
-    
-   
 }
 
-
+/****************Find Maximum Path sum in matrix using spaceOptimization*******************/
+/****************Time Complexity = O(M * N)*************************************/
+/****************Space Complexity = O(N)************************************/
 #include <bits/stdc++.h> 
 
 int helper(vector<vector<int>>&matrix) {
