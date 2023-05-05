@@ -11,7 +11,7 @@ int memoization(int ind1 , int ind2 , string &s , string &t , vector<vector<int>
 
 /****************Find Longest Common Subsequence using tabulation*******************/
 /****************Time Complexity = O(M * N)*************************************/
-/****************Space Complexity = O(N * M)*****************s*******************/
+/****************Space Complexity = O(N * M)************************************/
 
 int tabulation(string &s , string &t){
 	int n = s.length();
