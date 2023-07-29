@@ -1,16 +1,16 @@
 //{ Driver Code Starts
 //Initial template for C++
 
-#include<bits/stdc++.h> 
-using namespace std; 
+#include<bits/stdc++.h>
+using namespace std;
 
 // } Driver Code Ends
-//User function template for C++
+// User function template for C++
 /*********
  * Time Complexity is O(N*M)
  * Space Complexity is O(N*M)
- * 
-*/
+ *
+ */
 
 class Solution{   
     
