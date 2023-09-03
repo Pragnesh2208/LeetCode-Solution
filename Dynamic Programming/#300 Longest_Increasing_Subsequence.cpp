@@ -1,4 +1,39 @@
 /*
+Solution Using Binary Search Variant
+Time Complexity = O(NLogN)
+Space Complexity = O(N)
+*/
+
+class Solution {
+    private :
+    int binarySearch(vector<int>&arr){
+        int n = arr.size();
+        vector<int>lis;
+        lis.push_back(arr[0]);
+        for(int i = 1 ; i < n ; i++) {
+            if(arr[i] > lis.back()) {
+                lis.push_back(arr[i]);
+            } else {
+                int left = -1  , right = lis.size() - 1;
+                while(left + 1 < right) {
+                    int mid = left + (right - left) / 2;
+                    if(lis[mid] >= arr[i]) {
+                        right = mid; 
+                    } else left = mid;
+                }
+                lis[right] = arr[i];
+            }
+        }
+        return lis.size();
+    }
+
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        return binarySearch(nums);
+    }
+};
+
+/*
 Solution Using Memoization
 Time Complexity = O(N^2)
 Time Complexity can be calculated as , n number of maximum longest increasing subsequence
@@ -100,11 +135,10 @@ public:
     }
 };
 
-
 /*
 Solution Using Tabulation Variant
 Time Complexity = O(N^2)
-Space Complexity = O(N^2)
+Space Complexity = O(N)
 */
 
 class Solution {
