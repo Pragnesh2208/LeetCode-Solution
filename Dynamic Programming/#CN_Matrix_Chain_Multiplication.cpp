@@ -28,8 +28,7 @@ int matrixMultiplication(vector<int> &arr, int N)
 Solution Using Tabulation
 Time Complexity = O(N^3)
 Space Complexity = O(N^2)
-Auxilary Space Complexity = O(N)
-*/
+s*/
 #include <bits/stdc++.h> 
 
 int tabulation(vector<int>&arr , int N)  {
