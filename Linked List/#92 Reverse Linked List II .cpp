@@ -51,3 +51,34 @@ public:
         return head;
     }
 };
+
+/*
+Clean Code
+*/
+class Solution {
+
+    private : 
+    void reverseList(ListNode *head , int count) {
+       ListNode * subHead = head -> next;
+       while(count--) {
+           ListNode * temp = subHead -> next;
+           subHead -> next = temp -> next;
+           temp -> next = head -> next;
+           head -> next = temp;
+       }
+    }
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode * dummyHead = new ListNode(-1);
+        ListNode * tail = dummyHead;
+        tail -> next = head;
+       
+      int count = 1;
+      while(count < left ) {
+          tail = tail -> next;
+          count++;
+      }
+      reverseList(tail , right - left );
+      return dummyHead -> next;
+    }
+};
