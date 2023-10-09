@@ -41,3 +41,42 @@ public:
         return dummy -> next;
     }
 };
+/*
+Clean Code
+*/
+class Solution {
+    ListNode * reverse(ListNode * head , int k){
+        ListNode * subHead = head -> next;
+        ListNode * dummy = subHead;
+        int cnt = k + 1;
+        while(cnt && dummy != NULL) {
+            dummy = dummy -> next;
+            cnt--;
+        }
+        if(cnt) return head;
+        while(k--) {
+            ListNode *curNext = subHead -> next;
+            subHead -> next = curNext -> next;
+            curNext -> next = head -> next;
+            head -> next = curNext;
+        }
+        ListNode * x = subHead;
+        while(x != NULL){ cout<<x->val<<"->";
+        x = x -> next;
+        }
+        cout<<endl;
+        return subHead;
+    }
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode * dummyHead = new ListNode(-1);
+        ListNode * tail = dummyHead;
+        dummyHead -> next = head;
+        while(tail -> next != NULL) {
+            ListNode * temp =  reverse(tail , k - 1);
+            if(temp == tail) break;
+            else tail = temp;
+        }
+        return dummyHead -> next;
+    }
+};
