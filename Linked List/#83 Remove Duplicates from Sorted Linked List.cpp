@@ -34,3 +34,26 @@ public:
         
     }
 };
+/***********************Clean Code*******************************************************/
+/********************Optimal approach to Remove Duplicates from Linked List*********************/
+/*******************Time complexity = O(N) ***********************************************/
+/*******************Space complexity = O(1)  *********************************************/
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head == NULL) return NULL;
+        ListNode * first = head  , * second = head -> next;
+        while(second != NULL) {
+            if(first -> val == second -> val) {
+                ListNode * temp = second -> next;
+                first -> next = second -> next;
+                delete(second);
+                second = temp;
+            } else {
+                first = first -> next;
+                second = second -> next;
+            }
+        }
+        return head;
+    }
+};
