@@ -1,4 +1,5 @@
 /*
+Brute Force Approach
 Time Complexity = O(N)
 Space Complexity = O(1)
 */
@@ -23,6 +24,21 @@ public:
         node -> val = subHead -> val;
         node -> next = NULL;
 
+        return ;
+    }
+};
+
+/*
+Optimal Approach to Delete Node
+Time Complexity = O(1)
+Space Complexity = O(1)
+*/
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node -> val = node -> next -> val;
+        node -> next = node -> next -> next;
+        
         return ;
     }
 };
