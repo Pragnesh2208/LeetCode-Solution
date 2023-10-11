@@ -41,3 +41,31 @@ public:
         return head;
     }
 };
+
+
+/********************Optimal approach to Remove Nth Node From End Of Linked Lists*****************/
+/*******************Time complexity = O(N) *******************************************************/
+/*******************Space complexity = O(1)  *****************************************************/
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode * dummyHead = new ListNode(0);
+        ListNode * fPtr = dummyHead , *sPtr = dummyHead;
+        ListNode * tail = dummyHead;
+        dummyHead -> next = head;
+
+        while(n--) {
+            fPtr = fPtr -> next;
+        }
+
+        while(fPtr -> next != NULL) {
+            fPtr = fPtr -> next;
+            sPtr = sPtr -> next;
+        } 
+
+        sPtr -> next = sPtr -> next -> next;
+
+        return dummyHead -> next;
+    }
+};
