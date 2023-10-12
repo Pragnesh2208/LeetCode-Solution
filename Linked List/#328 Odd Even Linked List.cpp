@@ -32,3 +32,26 @@ public:
         
     }
 };
+
+/*
+Clean Code
+Time Complexity = O(N)
+Space Complexity = O(1)
+*/
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head == NULL) return head;
+        ListNode * odd = new ListNode(0) , * even = new ListNode(0);
+        vector<ListNode *> tail = {odd , even};
+        bool isOdd = false;
+        for(auto itr = head ; itr != NULL ; itr = itr -> next) {
+            tail[isOdd] -> next = itr;
+            tail[isOdd] = tail[isOdd] -> next;
+            isOdd = !isOdd;            
+        }
+        tail[1] -> next = NULL;
+        tail[0] -> next = even -> next;
+        return odd -> next;
+    }
+};
