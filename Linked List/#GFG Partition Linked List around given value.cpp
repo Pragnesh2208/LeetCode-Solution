@@ -25,30 +25,10 @@ struct Node* partition(struct Node* head, int x) {
         tail[index] -> next = itr;
         tail[index] = tail[index] -> next;
     }
-    if(less -> next != NULL) {
-        if(equal -> next != NULL) {
-            tail[0] -> next = equal -> next ;
-           
-            if(more -> next != NULL) {
-                tail[1] -> next = more -> next ;
-                tail[2] -> next = NULL;
-            } else {
-                 tail[1] -> next = NULL;
-            }
-        } else if(more -> next != NULL) {
-            tail[0] -> next = more -> next;
-            tail[2] -> next = NULL;
-        }else tail[0] -> next = NULL;
-        
-        return less -> next;
-    }
-    if(equal -> next != NULL) {
-        if(more -> next != NULL) {
-            tail[1] -> next = more -> next;
-            tail[2] -> next = NULL;
-        } else {
-            tail[1] -> next = NULL;
-        }
-        return equal -> next;
-    } else return more -> next;
+    
+    tail[2] -> next = NULL;
+    tail[1] -> next = more -> next;
+    tail[0] -> next = equal -> next;
+    
+    return less -> next;
 }
