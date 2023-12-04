@@ -1,0 +1,7 @@
+when we perform left shift (>>) then the value of left bit are
+ copied to the right bit which makes this operation faster
+
+
+https://graphics.stanford.edu/~seander/bithacks.html
+
+https://cp-algorithms.com/algebra/bit-manipulation.html
