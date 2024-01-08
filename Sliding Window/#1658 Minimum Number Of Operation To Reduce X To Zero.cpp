@@ -1,3 +1,7 @@
+/*Solution Using Optimal Appraoch*/
+/*Time Complexity = O(N)*/
+/*Space Complexity = O(1)*/
+
 class Solution {
 public:
     int minOperations(vector<int>& nums, int x) {
