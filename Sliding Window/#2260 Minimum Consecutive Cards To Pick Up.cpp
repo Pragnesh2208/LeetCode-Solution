@@ -1,3 +1,7 @@
+/*Solution Using Optimal Appraoch*/
+/*Time Complexity = O(N)*/
+/*Space Complexity = O(N)*/
+
 class Solution {
 public:
     int minimumCardPickup(vector<int>& cards) {
