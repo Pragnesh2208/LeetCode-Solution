@@ -38,7 +38,6 @@ class Solution {
 public:
     int longestNiceSubarray(vector<int>& nums) {
         int n = nums.size() , ans = 0;
-        vector<int>bits(32 , 0);
         long long xp = 0;
 
         for(int i = 0 , j = 0 ; i < n ; i++) {
