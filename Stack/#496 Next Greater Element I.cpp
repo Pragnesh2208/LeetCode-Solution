@@ -34,3 +34,34 @@ public:
         return ans;
     }
 };
+
+/************************************Optimal solution to find next greater element******/
+/************************************Time complexity = Theta of ( l2  + l1 ) *****************/
+/************************************Space Complexity = O ( l2 )************************/
+/*Using Array*/
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size() , m = nums2.size();
+        stack<int>st;
+        vector<int>ans(n , -1);
+        vector<int>mp(10001 , 0);
+
+        for(int i = m - 1 ; i >=0 ; i--){
+            while( st.size() > 0 && st.top() < nums2[i]) {
+                st.pop();
+            }
+            if(st.size() == 0 ) mp[nums2[i]] = -1;
+            else
+            mp[nums2[i]] = st.top();
+            
+            st.push(nums2[i]);
+        }
+
+        for(int i = 0 ; i < n ; i++) {
+            ans[i] = mp[nums1[i]];
+        }
+
+        return ans;
+    }
+};
