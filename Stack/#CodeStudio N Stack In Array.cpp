@@ -6,6 +6,7 @@ class NStack
 {
 public:
     // Initialize your data structure.
+    
     vector<int>data , next ,top;
     int arraySize  , numberOfStack , emptyIndex = 0;
     NStack(int k, int n)
