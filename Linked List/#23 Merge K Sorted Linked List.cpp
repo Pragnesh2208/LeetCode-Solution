@@ -10,7 +10,7 @@
  */
 
 /*
-* Optimal Approach to solve merge K Sorted Linked List
+* Optimal Approach to solve merge K Sorted Linked List using Divide and Conquer Approach
 Time Complexity = O(N LogK)
 Space Complexity = O(N)
 Auxilary Space Complexity = O(LogK)
@@ -47,5 +47,48 @@ public:
             else mergedList.push_back(lists[i]);
         }
         return mergeKLists(mergedList);
+    }
+};
+
+
+/*
+ Optimal Approach to solve merge K Sorted Linked List using Heap
+Time Complexity = O(N LogK)
+Space Complexity = O(K)
+Auxilary Space Complexity = O(1)
+Here N is number of node in list and K is number of list
+*/
+ class MyComp{
+    public: 
+    bool operator()(ListNode * a , ListNode* b) {
+        return a -> val > b -> val;
+    }
+ };
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+       priority_queue<ListNode* , vector<ListNode*>, MyComp>pq;
+       int k = lists.size();
+       ListNode * head = new ListNode(0);
+       ListNode * tail = head;
+
+       for(int i = 0 ; i < k ; i++) {
+            if(lists[i] != NULL)
+            pq.push(lists[i]);
+       }
+
+       while(!pq.empty()) {
+            ListNode * minEle = pq.top();
+            pq.pop();
+
+            tail -> next = minEle;
+            ListNode *tempNext = minEle -> next;
+            if(tempNext) pq.push(tempNext);
+
+            minEle -> next = nullptr;
+            tail = tail -> next;
+       }
+        return  head -> next;
     }
 };
