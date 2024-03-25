@@ -1,4 +1,4 @@
-/************************Optimal solution to find Kth Largest Element in Array*************************/
+/************************Optimal solution to find Kth Largest Element in Array Using Divide & Conquer*************************/
 /************************Time Complexity = Theta(N) and O(N^2)**************************************************/
 /************************Space Complexity = O(1)*************************************************/
 /****************************QuickSelect algorithm using lomuto partition*******************/
@@ -22,5 +22,24 @@ class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
         return quickSelect(nums,0, nums.size() - 1,k);
+    }
+};
+
+/************************Optimal solution to find Kth Largest Element in Array Using Heap*************************/
+/************************Time Complexity = O(NLogK)**************************************************/
+/************************Space Complexity = O(K)*************************************************/
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int,vector<int>,greater<int>> minHeap;
+        int n = nums.size();
+
+        for(int i = 0 ; i < n ; i++) {
+            minHeap.push(nums[i]);
+            if(minHeap.size() > k ) minHeap.pop();
+        }
+
+        return minHeap.top();
     }
 };
