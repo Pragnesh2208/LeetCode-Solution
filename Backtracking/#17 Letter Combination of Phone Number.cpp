@@ -1,26 +1,35 @@
 /********************************Optimal approach to Print Letter Combination of Phone Number*********/ 
-/********************************Time Complexity  = O (  N ^ N)************************/
+/********************************Time Complexity  = O (Number of Combination which are 4 * 4 * 3 * 3)************************/
 /********************************Space Complexity  = O ( N )******************************/
 class Solution {
-public:
-    vector<string> combination(string &digits , vector<string> &str , int index) {
-        if(index == digits.size()){
-            return {""};
-        }
-        vector<string> temp = combination(digits , str , index+1);
-        vector<string>ans;
-        for(auto num :str[digits[index] - '0']) {
-            for(auto cha : temp) {
-                ans.push_back(num + cha);
-            }
-        }
-        return ans;
+private:
+    vector<string> ans;
+    vector<string> getDigitMap() {
+        return {"",    "",    "abc",  "def", "ghi",
+                "jkl", "mno", "pqrs", "tuv", "wxyz"};
     }
-    vector<string> letterCombinations(string digits) {
-        vector<string>ans;
-        vector<string>str = {"", "" , "abc","def" , "ghi" , "jkl" , "mno" , "pqrs" , "tuv" , "wxyz"};
-        if(!digits.size() < 1) {
-            ans=combination(digits , str , 0);
+
+    void getCombinations(int index, string& currStr, string& digits,
+                         vector<string>& digitMap) {
+        if (currStr.length() == digits.length()) {
+            ans.push_back(currStr);
+            return;
         }
-        return ans;}
+        char c = digits[index];
+
+        for (int i = 0; i < digitMap[c - '0'].length(); i++) {
+            currStr += digitMap[c - '0'][i];
+            getCombinations(index + 1, currStr, digits, digitMap);
+            currStr.pop_back();
+        }
+    }
+
+public:
+    vector<string> letterCombinations(string digits) {
+        if(digits.length() == 0) return {};
+        string str = "";
+        vector<string> digitMap = this->getDigitMap();
+        getCombinations(0, str, digits, digitMap);
+        return this->ans;
+    }
 };
