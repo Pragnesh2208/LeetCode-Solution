@@ -1,51 +1,52 @@
-/************************************Optimal Approch for Sudoku Solver*****************************************/
+/** 
+ * Optimal solution for N-Queen problem.
+ * Time Complexity = O(N! + S(N)*N^2) = O(N!). Here S = solution and S(N) = we have n solutions.
+ * Space Complexity = O(N).
+*/
 class Solution {
-    private :
-    bool isSafe(int row , int col , vector<string> & board , int &n) {
-        int dupRow = row;
-        int dupCol = col;
-        while(row  >= 0 && col >= 0) {
-            if(board[row][col] == 'Q') return false;
-            row--;
-            col--;
+    bool getSolution(int row , int col , vector<string>&board , vector<vector<string>>&ans) {
+        int boardSize = board.size();
+        if(col == boardSize ) {
+            ans.push_back(board);
+            return true;
         }
-        row = dupRow;
-        col = dupCol;
-         while(row  < n && col >= 0) {
-            if(board[row][col] == 'Q') return false;
-            row++;
-            col--;
+        bool flag = false;
+        for(int rowIndex = row ; rowIndex < boardSize ; rowIndex++) {
+            if(isValidCell(rowIndex , col , board)) {
+                board[rowIndex][col] = 'Q';
+                if(getSolution(0 , col + 1 , board , ans)) {
+                    flag = true;
+                }
+                board[rowIndex][col] = '.';
+            }
         }
-        row = dupRow;
-        col = dupCol;
-        while(col >= 0) {
-            if(board[row][col] == 'Q') return false;
-            col--;
-        }
-        return true;
+
+        return flag;
+        
     }
-    void solve ( int col , vector<string> &board , vector<vector<string>> &res , int &n) {
-        if( col == n) {
-            res.push_back(board);
-            res;
+
+    bool isValidCell(int row , int col , vector<string>&board) {
+        int n = board.size();
+        for(int i = 0; i < col ; i++) {
+            if(board[row][i] == 'Q') return false;
         }
-        for(int i = 0  ; i < n ; i++ ) {
-             if(isSafe( i , col , board , n)) {
-                 board[i][col] = 'Q';
-                 solve(col + 1 , board , res , n);
-                 board[i][col] = '.';
-             }
+
+        for(int i = col -1 , j = row - 1 ; i >= 0  && j >= 0 ; i-- , j--) {
+            if(board[j][i] == 'Q') return false;
         }
+
+        for(int i = col -1 , j = row + 1 ; i >= 0  && j < n ; i-- , j++) {
+            if(board[j][i] == 'Q') return false;
+        }
+
+        return true;
     }
 public:
     vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string>> res;
-        string s (n ,'.');
-        vector<string>board( n);
-        for(int i = 0 ; i< n ; i++ ) {
-            board[i] = s;
-        }
-        solve ( 0 , board , res , n );
-        return res;
+        vector<vector<string>>ans;
+        string emptyRow(n , '.');
+        vector<string>board(n , emptyRow);
+        getSolution(0, 0 ,board , ans );
+        return ans;
     }
 };
