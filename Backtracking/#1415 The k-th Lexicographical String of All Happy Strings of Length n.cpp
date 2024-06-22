@@ -41,20 +41,28 @@ public:
 /************************Optimal Approach to get The k-th Lexicographical String of All Happy Strings of Length n******/
 /************************Time Complexity = O( n )Here n = length of sttring we want*******************************************/
 /***********************Space Complexity = O (n)********************************************************************************/
-class Solution {  
+class Solution {
 public:
     string getHappyString(int n, int k) {
-       int perm =  1 <<( n - 1);
-        if( k > 3 * perm)
-            return "";
-        k--;
-        char ch = 'a' + int (k / perm) ;
-        string s = to_string(ch);
-        while(perm  > 1) {
-            k = k % perm;
-            perm >>= 1;
-            s += k / perm == 0 ? 'a' + (s.back() == 'a') : 'b' + (s.back() == 'b');
-        }
-        return s;
+        string ans = "";
+        int totalPermutation = n - 1 == 0 ? 3 : (1 << (n - 1) ) * 3 ;
+        int permutationSetSize = totalPermutation / 3;
+        cout<<totalPermutation<<endl;
+        if(totalPermutation >= k) {
+            k--;
+            int mod = (k) / permutationSetSize;
+            ans += 'a' + mod;
+            k = k % permutationSetSize;
+            permutationSetSize >>= 1;
+
+            while(permutationSetSize) {
+                int mod = (k ) / permutationSetSize;
+                k = k % permutationSetSize;
+                permutationSetSize >>= 1;
+                ans += mod == 0 ? 'a'  +( ans.back() == 'a' ): 'b' + (ans.back() != 'c');
+            }
+        } 
+        
+        return ans;
     }
 };
