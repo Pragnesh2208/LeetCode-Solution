@@ -43,3 +43,45 @@ public:
         return ans;
     }
 };
+
+/************************************Optimal approach to Find Number with consecutive difference Using backtracking***********************************/ 
+/**********************************************Time Complexity  = O ((3 ^ N) * N )***********************************************/
+/**********************************************Space Complexity  = O (N)**************************************************/
+class Solution {
+    void backtrack(string address, int numberOfPartition, string& s,
+                   vector<string>& result, int ind) {
+        int n = s.length();
+        if (numberOfPartition == 0) {
+            int num = 0;
+            if (ind == n)
+                return;
+            int i = ind;
+            while (ind < n) {
+                num = (num * 10) + (s[ind++] - '0');
+                if (num > 255)
+                    break;
+            }
+
+            if (num > 255 || n - i > 1 && s[i] == '0')
+                return;
+            result.push_back(address + s.substr(i));
+        }
+
+        int num = 0;
+        for (int i = ind; i < n; i++) {
+            num = (num * 10) + (s[i] - '0');
+            if ((i != ind && s[ind] == '0') || num > 255) {
+                break;
+            }
+            backtrack(address + s.substr(ind, i - ind + 1) + ".",
+                      numberOfPartition - 1, s, result, i + 1);
+        }
+    }
+
+public:
+    vector<string> restoreIpAddresses(string s) {
+        vector<string> result;
+        backtrack("", 3, s, result, 0);
+        return result;
+    }
+};
