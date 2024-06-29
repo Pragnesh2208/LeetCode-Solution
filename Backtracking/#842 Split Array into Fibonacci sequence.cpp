@@ -1,48 +1,44 @@
 /************************************Optimal approach to Split Array into Fibonacci Sequence***********************************/ 
-/**********************************************Time Complexity  = O (10 ^ N)*************************************************/
-/*********************************************At each level, we branch at most 10 times, as the for-loop will run until Integer.MAX_VALUE is reached (which is maximum 10 digits in length).Our recursive calls go to a maximum depth of       N********************************************************************/
+/**********************************************Time Complexity  = O (2 ^ N)*************************************************/
 /**********************************************Space Complexity  = O (N) which is the Depth of Recursion Tree**************************************************/
 class Solution {
-    private:
-    bool getCombination(int ind , string st , vector<int> &ans) {
-        if(ind == st.size() ) {
-             if(ans.size()>=3)
-                 return true;
-            else
-                return false;
+    bool backtracking(int ind, string& s, vector<int>& result) {
+        int n = s.length();
+        if (ind == n) {
+            return result.size() > 2;
         }
-        
-        int n = st.size();
-        long num = 0;
-        for(int i = ind ; i < n ; i++ ) {
-            if(i > ind && st[ind] == '0')
+
+        int num = 0;
+        for (int i = ind; i < n; i++) {
+            int tempNum = s[i] - '0';
+            if (num > (INT_MAX - tempNum) / 10)
                 return false;
-            
-             num = num*10 + (st[i] - '0');
-            
-            if (num > INT_MAX) 
-              break;
-        
-            int size = ans.size();
-            
-            if(size >= 2 && num - ans[size - 1] - ans[size - 2]  > 0) 
-                break;
-            
-         if( size <= 1 || num - ans[size - 1] - ans[size - 2] == 0 ) {
-             
-                ans.push_back((int)num);
-                if(getCombination(i + 1 , st , ans) == true) { 
+            num = (num * 10) + tempNum;
+            if (i != ind && s[ind] == '0')
+                return false;
+
+            long long temp1 = 0;
+            long long temp2 = 0;
+            if (result.size() >= 2) {
+                temp1 = result.back();
+                temp2 = result[result.size() - 2];
+            }
+
+            if (result.size() < 2 || temp1 + temp2 == num) {
+                result.push_back(num);
+                if (backtracking(i + 1, s, result)) {
                     return true;
                 }
-                    ans.pop_back();
+                result.pop_back();
             }
         }
         return false;
     }
+
 public:
-    vector<int> splitIntoFibonacci(string num) {
-        vector<int> ans;
-        getCombination( 0 , num , ans );
-        return ans;
+    vector<int> splitIntoFibonacci(string S) {
+        vector<int> result;
+        backtracking(0, S, result);
+        return result;
     }
 };
