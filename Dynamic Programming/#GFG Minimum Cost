@@ -1,0 +1,68 @@
+/******************************Sub-Optimal Approach to Find Minimum Cost Using Recursion***********/
+/******************************Time Complexity is O(N * K)*********************************************/
+/******************************Space Complexity is O(N)********************************************/
+class Solution {
+    private: 
+    int minCostJump(int step , int &k , vector<int>&height , vector<int>&dp) {
+        int n = height.size();
+        if(dp[step] != -1) return dp[step];
+        int result = INT_MAX;
+        for(int upcomingStep = step + 1 ; upcomingStep < min(k + step + 1 , n)  ; upcomingStep++) { 
+            result = min(result , minCostJump(upcomingStep , k , height  , dp) + abs(height[step] - height[upcomingStep]) );
+        }
+        
+        return dp[step] = result;
+    }
+  public:
+    int minimizeCost(vector<int>& height, int n, int k) {
+        // Code here
+        vector<int>dp(n , -1);
+        dp[n - 1] = 0; 
+        return minCostJump(0 , k  , height , dp);
+    }
+};
+
+/******************************Sub-Optimal Approach to Find Minimum Cost Using Iteration***********/
+/******************************Time Complexity is O(N * K)*********************************************/
+/******************************Space Complexity is O(N)********************************************/
+class Solution {
+  public:
+    int minimizeCost(vector<int>& height, int n, int k) {
+        // Code here
+        vector<int>dp(n , -1);
+        dp[n - 1] = 0; 
+        for(int step = n - 2 ; step >= 0 ; step--) {
+            int result = INT_MAX;
+            for(int upcomingStep = step + 1 ; upcomingStep < min(k + step + 1 , n)  ; upcomingStep++) { 
+                result = min(result , dp[upcomingStep] + abs(height[step] - height[upcomingStep]) );
+            }
+        
+        dp[step] = result;
+        }
+        return dp[0];
+    }
+};
+
+
+/******************************Optimal Approach to Find Minimum Cost Using Iteration***********/
+/******************************Time Complexity is O(N * K)*********************************************/
+/******************************Space Complexity is O(K)********************************************/
+class Solution {
+  public:
+    int minimizeCost(vector<int>& height, int n, int k) {
+        // Code here
+        vector<int>dp(k + 1 , 0);
+        for(int step = n - 2 ; step >= 0 ; step--) {
+            int result = INT_MAX;
+            for(int upcomingStep = step + 1  ; upcomingStep < min(k + step + 1 , n)  ; upcomingStep++) { 
+                result = min(result , dp[upcomingStep - step - 1 ] + abs(height[step] - height[upcomingStep]) );
+            }
+            for(int i = k - 1 ; i > 0  ; i--) {
+                dp[i] = dp[i - 1];
+            }
+        dp[0] = result;
+        }
+        return dp[0];
+    }
+};
+
