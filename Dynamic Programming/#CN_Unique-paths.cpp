@@ -1,3 +1,19 @@
+/****************Solution of Unique Paths using Combinatorics***********/
+/****************Time Complexity = O( M)********************************/
+/****************Space Complexity = O(1)************************************/
+class Solution {
+public:
+    int uniquePaths(int row, int col) {
+        int n = row + col - 2;
+        int r =  row - 1;
+        double res = 1;
+        for(int i = 1 ; i <= r ; i++) {
+            res = res * (n - r +  i) /i;
+        }
+        return (int)res;
+    }
+};
+
 /****************Solution of Unique Paths using Backtracking*********************/
 /****************Time Complexity = O(2 ^ ( M * N) )********************************/
 /****************Space Complexity = O( M * N )************************************/
