@@ -1,4 +1,45 @@
 /*
+Solution Using Memoization
+Time Complexity = O(N^2)
+Space Complexity = O(N^2)
+*/
+class Solution {
+    int solve(int ind , int prevInd , vector<int>&arr , vector<vector<int>>&dp) {
+        int n = arr.size();
+        if(ind == n) return 0;
+        if(dp[ind][prevInd + 1] != -1) return dp[ind][prevInd + 1];
+        int take = prevInd == -1 || (arr[ind] % arr[prevInd] == 0) ? solve(ind + 1 , ind , arr , dp) + 1 : 0;
+        int notTake = solve(ind + 1 , prevInd , arr , dp);
+        return dp[ind][prevInd + 1] = max(take , notTake);
+    }
+public:
+    vector<int> largestDivisibleSubset(vector<int>& nums) {
+        int n = nums.size();
+        vector<int>ans;
+        vector<vector<int>>dp( n  + 1, vector<int>( n + 1 , -1));
+        sort(nums.begin() , nums.end());
+        solve(0 , -1 , nums,dp);
+        for(int prev = 0 ; prev <= n ;prev++) dp[n][prev] = 0;
+
+        int ind = 0 , prevInd =  -1 ;
+        while(ans.size() != dp[0][0] && ind < n) {
+            bool flag = true;
+            if (ans.size() >= 1) {
+                flag = nums[ind] % ans.back() == 0;
+            }
+            if(flag && dp[ind][prevInd + 1] == dp[ind + 1][ind + 1] + 1) {
+            
+                ans.push_back(nums[ind]);
+                prevInd = ind ;
+                ind++;
+            } else ind++;
+        }
+        return ans;
+    }
+};
+
+
+/*
 Solution Using Tabulation
 Time Complexity = O(N^2)
 Space Complexity = O(N)
