@@ -1,0 +1,47 @@
+/****************Optimal of Solution using Memoization***********/
+/****************Time Complexity = O(N^3)****************************/
+/****************Space Complexity = O(N^3)***************************/
+
+int solve(int start , int end , bool isTrue , string &exp , vector<vector<vector<int>>>&dp) {
+    if(start == end) {
+        if(isTrue) return exp[start] == 'T';
+        else return exp[start] == 'F';
+    }
+    if(dp[start][end][isTrue] != -1) return dp[start][end][isTrue];
+
+    long long totalWays = 0;
+    int mod = 1e9 + 7;
+    for(int i = start + 1 ; i < end ; i+=2) {
+        long long rt = solve(i + 1 , end , true , exp , dp);
+        long long rf = solve(i + 1 , end , false , exp , dp);
+        long long lt = solve(start , i - 1 , true , exp , dp);
+        long long lf = solve(start , i - 1, false , exp , dp);
+
+        if(exp[i] == '&') {
+            if(isTrue) {
+                totalWays = (totalWays + (rt * lt) % mod)%mod;
+            } else {
+                totalWays = (totalWays + (rt * lf) % mod + (rf * lt) % mod + (rf * lf) % mod) % mod;
+            }
+        } else if(exp[i] == '|') {
+            if(isTrue) {
+                totalWays = (totalWays + ((rt * lt) % mod + (rt * lf)%mod + (lt * rf) % mod) % mod);
+            } else {
+                totalWays = (totalWays + (rf * lf) % mod) % mod;
+            }
+        } else if(exp[i] == '^') {
+            if(isTrue) {
+                totalWays = (totalWays + ((rt * lf) % mod + (rf * lt)%mod) % mod);
+            } else {
+                totalWays = (totalWays + ((lf * rf) % mod + (rt * lt) % mod) % mod);
+            }
+        }
+    }
+    return dp[start][end][isTrue] = totalWays % mod;
+}
+int evaluateExp(string & exp) {
+    // Write your code here.
+    int n = exp.length();
+ vector<vector<vector<int>>>dp(n , vector<vector<int>>(n , vector<int>(2 , -1)));
+    return solve(0 , n - 1 ,true , exp , dp);
+}
