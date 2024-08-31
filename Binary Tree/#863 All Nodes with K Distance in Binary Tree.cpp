@@ -1,5 +1,5 @@
 /***********************Optimal Approach for All Nodes with K Distance in Binary Tree**************/
-/************************Time Complexity = O(N)***************************************/
+/************************Time Complexity = O(NLogN)***************************************/
 /************************Space Complexity = O(N)**************************************/
 class Solution {
 private:
