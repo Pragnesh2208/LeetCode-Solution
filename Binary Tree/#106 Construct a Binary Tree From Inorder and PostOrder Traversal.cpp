@@ -41,22 +41,24 @@ public:
 /*********************Time complexity = O (N * LogN)*************************************************************************/
 /**********************Space complexity = O (H + N)**********************************************************************/
 class Solution {
-public:
-    TreeNode * cs(vector<int>&pr , map<int,int>&mp, int &ri , int low , int high) {
-        
+    private:
+    TreeNode * constructTree(vector<int>&postorder , map<int,int>&mp , int &rootIndex , int low , int high) {
         if(low > high) return NULL;
-        TreeNode * root = new TreeNode(pr[ri]);
-        int pivot = mp[pr[ri]];
-        ri++;
-        root -> left = cs(pr , mp , ri  , low , pivot - 1);
-        root -> right = cs(pr , mp , ri  , pivot + 1 , high);
-
+        int rootElement =  postorder[rootIndex];
+        TreeNode * root = new TreeNode(rootElement);
+        int pivot = mp[rootElement];
+        rootIndex--;
+        root -> right = constructTree(postorder , mp , rootIndex , pivot + 1 , high);
+        root -> left = constructTree(postorder , mp , rootIndex , low , pivot - 1);
         return root;
     }
-    TreeNode* buildTree(vector<int>& pr, vector<int>& in) {
-        int rootIndex = 0;
-        map<int,int>mp;
-        for(int i = 0; i < in.size() ; i++) mp[in[i]] = i;
-        return cs(pr , mp , rootIndex , 0 , in.size() - 1);
+public:
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        map<int , int>mp;
+        int n = inorder.size() - 1;
+        for(int i = 0 ; i <= n ; i++) {
+            mp[inorder[i]] = i;
+        }
+        return constructTree(postorder , mp , n , 0 , n);
     }
 };
