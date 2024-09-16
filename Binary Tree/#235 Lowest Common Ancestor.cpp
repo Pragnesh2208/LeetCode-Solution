@@ -7,21 +7,18 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-/******************************Recurive Brute Force Approach to Find Lowest Common Ancestor******************/
+/******************************Recurive Optimal Approach to Find Lowest Common Ancestor******************/
 /******************************Time Complexity = O(N)********************************************************/
 /*******************************Space Complexity = O(H)******************************************************/
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root == NULL)
-            return root;
-        if(root == p || root == q) 
-            return root;
-        TreeNode * left = lowestCommonAncestor(root -> left , p,  q);
-        TreeNode * right = lowestCommonAncestor(root -> right , p,  q);
-        if(left && right)
-            return root;
-        return left?left : right;
+     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        int rootVal = root -> val;
+        int pVal = p -> val;
+        int qVal = q -> val;
+        if(rootVal > pVal && rootVal > qVal) return lowestCommonAncestor(root -> left , p , q);
+        else if(rootVal < pVal && rootVal < qVal) return lowestCommonAncestor(root -> right , p , q);
+        else return root;
     }
 };
 /******************************Optimal Force Approach to Find Lowest Common Ancestor******************/
