@@ -8,7 +8,7 @@ struct Trie {
     bool isEnd = false;
 };
 class Solution {
-private:
+private
     Trie* root = new Trie();
     void insert(vector<string>&dict) {
         for(string word : dict) {
