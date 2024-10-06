@@ -1,3 +1,34 @@
+/*****************************Optimal solution of Number of Provinces using DFS******************************/
+/****************************Time Complexity = O( V * E) As we are using adjacent matrix***********/
+/***************************Space Complexity = O(N) ******************/
+class Solution {
+void dfs(vector<vector<int>>&matrix , vector<bool>& visited , int vector) {
+    if(visited[vector]) return;
+    visited[vector] = true;
+    int totalVector = matrix.size();
+    for(int newVector = 0 ; newVector < totalVector ; newVector++ ) {
+        if(matrix[vector][newVector])
+        dfs(matrix , visited , newVector);
+    }
+    return;
+}
+public:
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int totalVector = isConnected.size();
+        vector<bool>visited(totalVector , false);
+        int totalProvince = 0;
+        for(int vector = 0 ; vector < totalVector ; vector++) {
+            if(!visited[vector])
+            {
+                totalProvince++;
+                dfs(isConnected , visited , vector);
+            }
+        }
+
+        return totalProvince;
+    }
+};
+
 /*****************************Optimal solution of Number of Provinces******************************/
 /****************************Time Complexity = O( V * E) As we are using adjacent matrix***********/
 /***************************Space Complexity = O(N) as we are using  Disjoint set******************/
