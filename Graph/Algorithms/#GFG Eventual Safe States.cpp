@@ -41,3 +41,51 @@ class Solution {
         return ans;
     }
 };
+
+
+
+
+/*****************************Detect Cycle in Directed Graph Using BFS Topo sort****************************/
+/****************************Time Complexity = O( V + E)*******************************/
+/***************************Space Complexity = O(V+E) as we are creating new graph********/
+
+class Solution {
+
+  public:
+    vector<int> eventualSafeNodes(int V, vector<int> graph[]) {
+        // code here
+        vector<vector<int>>adj(V);
+        for(int node = 0 ; node < V ; node++) {
+            for(int child : graph[node]) {
+                adj[child].push_back(node);        
+            }
+        }
+        
+        vector<int>safeNodes;
+        vector<int>indegree(V , 0);
+        for(int node = 0 ; node < V ; node++) {
+            for(int child : adj[node]) {
+                indegree[child]++;
+            }
+        }
+        
+        queue<int>que;
+        for(int node  = 0 ; node < V ; node++) if(indegree[node] == 0) que.push(node);
+        vector<bool>isSafe(V , false);
+        while(!que.empty()) {
+            int node = que.front();
+            que.pop();
+            isSafe[node] = true;
+            
+            for(int child : adj[node]) {
+                indegree[child]--;
+                
+                if(indegree[child] == 0) que.push(child);
+            }
+        }
+        
+        for(int node = 0; node < V ; node++) if(isSafe[node])safeNodes.push_back(node);
+        
+        return safeNodes;
+    }
+};
