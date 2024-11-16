@@ -1,6 +1,6 @@
 /*****************************Sortest Path Of Undirected/Directed weighted graph using Dijakstra Algorithm*******/
-/****here we are visiting every vertices so for wrost case our time complexity for visiting every vertices is O(N + E)
- And we also use Priority queue and at Max we can add N vertices so for that our time complexity will be O(N+E) * Log(N)***********/
+/****here we are visiting every vertices so for wrost case our time complexity for visiting every vertices is O(E)
+ And we also use Priority queue and at Max we can add N vertices so for that our time complexity will be O(E) * Log(N)***********/
 /***************************Space Complexity = O(N) as we are using Priority queue and at Max we will store N vertices********/
 
 Class Solution{
