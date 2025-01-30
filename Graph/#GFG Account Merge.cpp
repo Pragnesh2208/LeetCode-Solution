@@ -1,6 +1,6 @@
 /*****************************Optimal solution of Account Merge**************************/
 /****************************Time Complexity = O(V * E * Log(totalEmail))*******************************************/
-/***************************Space Complexity = O(TotalEmail)************************/
+/***************************Space Complexity = O(TotalEmail + V)************************/
 
 class DSU {
   public:
