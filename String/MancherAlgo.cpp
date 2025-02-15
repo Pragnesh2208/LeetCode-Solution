@@ -1,5 +1,5 @@
 /**
- * Mancher algorightm to find Palindrom Substring
+ * Mancher algorightm to find Longest Palindrom Substring
  * Time Complexity = O(N);
  * Space Complexity = O(N);
  */
